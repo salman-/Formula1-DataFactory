@@ -1,0 +1,35 @@
+{
+	"name": "Formula1_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Formula1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-12-05T20:47:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						1
+					],
+					"hours": [
+						0
+					],
+					"weekDays": [
+						"Monday"
+					]
+				}
+			}
+		}
+	}
+}
