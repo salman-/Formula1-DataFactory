@@ -1,5 +1,5 @@
 {
-	"name": "data_set_processed_data",
+	"name": "dataset_processed_data",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "linked_service_process_data",
