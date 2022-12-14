@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "formulaeinsdatafactory"
 		},
-		"link_service_databricks_accessToken": {
-			"value": ""
-		},
 		"link_service_formula1_raw_data_accountKey": {
 			"value": ""
 		},
@@ -16,9 +13,6 @@
 		},
 		"formulaeinskeyvault_properties_typeProperties_baseUrl": {
 			"value": "https://formulaeinspqr-keyvault.vault.azure.net/"
-		},
-		"link_service_databricks_properties_typeProperties_existingClusterId": {
-			"value": "1126-151025-ulosttnu"
 		},
 		"link_service_formula1_raw_data_properties_typeProperties_url": {
 			"value": "https://formuleinsstorage.dfs.core.windows.net/"
