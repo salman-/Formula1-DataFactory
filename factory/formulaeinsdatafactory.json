@@ -1,4 +1,9 @@
 {
 	"name": "formulaeinsdatafactory",
-	"location": "westeurope"
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7db3e46c-9c5b-4772-8a5f-8465a14cc99b",
+		"tenantId": "1f2519d6-a33d-4336-abb5-8085bcb587d6"
+	}
 }
