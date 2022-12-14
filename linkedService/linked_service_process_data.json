@@ -1,0 +1,11 @@
+{
+	"name": "linked_service_process_data",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://formuleinsstorage.blob.core.windows.net/",
+			"accountKind": "StorageV2"
+		}
+	}
+}
