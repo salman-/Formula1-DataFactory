@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "formulaeinsdatafactory"
+		},
+		"link_service_databricks_accessToken": {
+			"value": ""
+		},
+		"link_service_formula1_raw_data_accountKey": {
+			"value": ""
+		},
+		"formula1_database_link_service_properties_typeProperties_url": {
+			"value": "http://ergast.com/downloads/f1db_csv.zip"
+		},
+		"formulaeinskeyvault_properties_typeProperties_baseUrl": {
+			"value": "https://formulaeinspqr-keyvault.vault.azure.net/"
+		},
+		"link_service_databricks_properties_typeProperties_existingClusterId": {
+			"value": "1126-151025-ulosttnu"
+		},
+		"link_service_formula1_raw_data_properties_typeProperties_url": {
+			"value": "https://formuleinsstorage.dfs.core.windows.net/"
+		}
+	}
+}

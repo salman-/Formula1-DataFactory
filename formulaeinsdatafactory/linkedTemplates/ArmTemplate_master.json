@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "formulaeinsdatafactory"
+		},
+		"link_service_databricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'link_service_databricks'"
+		},
+		"link_service_formula1_raw_data_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'link_service_formula1_raw_data'"
+		},
+		"formula1_database_link_service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "http://ergast.com/downloads/f1db_csv.zip"
+		},
+		"formulaeinskeyvault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://formulaeinspqr-keyvault.vault.azure.net/"
+		},
+		"link_service_databricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1126-151025-ulosttnu"
+		},
+		"link_service_formula1_raw_data_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://formuleinsstorage.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "formulaeinsdatafactory_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"link_service_databricks_accessToken": {
+						"value": "[parameters('link_service_databricks_accessToken')]"
+					},
+					"link_service_formula1_raw_data_accountKey": {
+						"value": "[parameters('link_service_formula1_raw_data_accountKey')]"
+					},
+					"formula1_database_link_service_properties_typeProperties_url": {
+						"value": "[parameters('formula1_database_link_service_properties_typeProperties_url')]"
+					},
+					"formulaeinskeyvault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('formulaeinskeyvault_properties_typeProperties_baseUrl')]"
+					},
+					"link_service_databricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('link_service_databricks_properties_typeProperties_existingClusterId')]"
+					},
+					"link_service_formula1_raw_data_properties_typeProperties_url": {
+						"value": "[parameters('link_service_formula1_raw_data_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
