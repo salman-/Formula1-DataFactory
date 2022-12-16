@@ -446,7 +446,7 @@
 						}
 					},
 					{
-						"name": "ForEach1",
+						"name": "Loop over all ingested elements",
 						"type": "ForEach",
 						"dependsOn": [
 							{
@@ -464,7 +464,7 @@
 							},
 							"activities": [
 								{
-									"name": "Copy-2-db",
+									"name": "Persist objects in database",
 									"type": "Copy",
 									"dependsOn": [],
 									"policy": {
@@ -541,137 +541,6 @@
 				"[concat(variables('factoryId'), '/datasets/source_dataset_remote_database_in_csv')]",
 				"[concat(variables('factoryId'), '/datasets/sink_dataset_rawdata_csv')]",
 				"[concat(variables('factoryId'), '/linkedServices/linked_service_databricks')]",
-				"[concat(variables('factoryId'), '/datasets/source_dataset_processed_data_parquet')]",
-				"[concat(variables('factoryId'), '/datasets/sink_dataset_sqlserver_database_for_processeddata')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/copy-to-db')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "List all ingested data",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "source_dataset_processed_data_parquet",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"childItems"
-							],
-							"storeSettings": {
-								"type": "AzureBlobStorageReadSettings",
-								"recursive": true,
-								"enablePartitionDiscovery": false
-							}
-						}
-					},
-					{
-						"name": "ForEach1",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "List all ingested data",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('List all ingested data').output.childItems",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "Copy-2-db",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "ParquetSource",
-											"storeSettings": {
-												"type": "AzureBlobStorageReadSettings",
-												"recursive": true,
-												"wildcardFolderPath": {
-													"value": "@item().name",
-													"type": "Expression"
-												},
-												"wildcardFileName": "*.parquet",
-												"enablePartitionDiscovery": false
-											}
-										},
-										"sink": {
-											"type": "AzureSqlSink",
-											"writeBehavior": "insert",
-											"sqlWriterUseTableLock": false,
-											"tableOption": "autoCreate",
-											"disableMetricsCollection": false
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "source_dataset_processed_data_parquet",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "sink_dataset_sqlserver_database_for_processeddata",
-											"type": "DatasetReference",
-											"parameters": {
-												"tableName": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									]
-								}
-							]
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2022-12-15T19:17:38Z"
-			},
-			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/source_dataset_processed_data_parquet')]",
 				"[concat(variables('factoryId'), '/datasets/sink_dataset_sqlserver_database_for_processeddata')]"
 			]
