@@ -1,0 +1,20 @@
+{
+	"name": "source_dataset_formula1_processed_data_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_formula1_processed_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "processeddata"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

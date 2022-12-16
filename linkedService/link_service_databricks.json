@@ -1,5 +1,6 @@
 {
 	"name": "link_service_databricks",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureDatabricks",
@@ -16,6 +17,5 @@
 			"newClusterInitScripts": [],
 			"clusterOption": "Fixed"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }

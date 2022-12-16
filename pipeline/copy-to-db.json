@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy-2-db",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -18,9 +18,9 @@
 					"source": {
 						"type": "ParquetSource",
 						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
+							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "*",
+							"wildcardFolderPath": "races",
 							"wildcardFileName": "*.parquet",
 							"enablePartitionDiscovery": false
 						}
@@ -29,6 +29,7 @@
 						"type": "AzureSqlSink",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
@@ -43,18 +44,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "dataset_processed_data",
+						"referenceName": "source_dataset_formula1_processed_data_parquet",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "dataset_sql_database",
+						"referenceName": "sink_dataset_sqlserver_database_for_processed_data",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2022-12-15T19:17:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
