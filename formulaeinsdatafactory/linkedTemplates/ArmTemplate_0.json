@@ -107,7 +107,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/sink_dataset_formula1_raw_data_csv')]",
+			"name": "[concat(parameters('factoryName'), '/sink_dataset_rawdata_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -134,7 +134,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/sink_dataset_sqlserver_database_for_processed_data')]",
+			"name": "[concat(parameters('factoryName'), '/sink_dataset_sqlserver_database_for_processeddata')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -155,7 +155,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/source_dataset_formula1_processed_data_parquet')]",
+			"name": "[concat(parameters('factoryName'), '/source_dataset_processed_data_parquet')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -179,7 +179,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/source_dataset_http_formula1_database_in_csv')]",
+			"name": "[concat(parameters('factoryName'), '/source_dataset_remote_database_in_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -261,14 +261,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "source_dataset_http_formula1_database_in_csv",
+								"referenceName": "source_dataset_remote_database_in_csv",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "sink_dataset_formula1_raw_data_csv",
+								"referenceName": "sink_dataset_rawdata_csv",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -310,8 +310,8 @@
 				"lastPublishTime": "2022-12-15T14:18:10Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/source_dataset_http_formula1_database_in_csv')]",
-				"[concat(variables('factoryId'), '/datasets/sink_dataset_formula1_raw_data_csv')]",
+				"[concat(variables('factoryId'), '/datasets/source_dataset_remote_database_in_csv')]",
+				"[concat(variables('factoryId'), '/datasets/sink_dataset_rawdata_csv')]",
 				"[concat(variables('factoryId'), '/linkedServices/linked_service_databricks')]"
 			]
 		},
@@ -363,14 +363,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "source_dataset_formula1_processed_data_parquet",
+								"referenceName": "source_dataset_processed_data_parquet",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "sink_dataset_sqlserver_database_for_processed_data",
+								"referenceName": "sink_dataset_sqlserver_database_for_processeddata",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -385,8 +385,8 @@
 				"lastPublishTime": "2022-12-15T19:17:38Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/source_dataset_formula1_processed_data_parquet')]",
-				"[concat(variables('factoryId'), '/datasets/sink_dataset_sqlserver_database_for_processed_data')]"
+				"[concat(variables('factoryId'), '/datasets/source_dataset_processed_data_parquet')]",
+				"[concat(variables('factoryId'), '/datasets/sink_dataset_sqlserver_database_for_processeddata')]"
 			]
 		},
 		{
@@ -409,7 +409,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "source_dataset_formula1_processed_data_parquet",
+								"referenceName": "source_dataset_processed_data_parquet",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
@@ -432,7 +432,7 @@
 				"lastPublishTime": "2022-12-15T19:17:38Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/source_dataset_formula1_processed_data_parquet')]"
+				"[concat(variables('factoryId'), '/datasets/source_dataset_processed_data_parquet')]"
 			]
 		},
 		{
