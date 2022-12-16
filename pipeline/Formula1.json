@@ -224,7 +224,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "Loop over all ingested elements",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -242,7 +242,7 @@
 					},
 					"activities": [
 						{
-							"name": "Copy-2-db",
+							"name": "Persist objects in database",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
