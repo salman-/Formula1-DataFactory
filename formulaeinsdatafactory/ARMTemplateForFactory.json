@@ -204,6 +204,143 @@
 							"referenceName": "linked_service_databricks",
 							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "List all ingested data",
+						"type": "GetMetadata",
+						"dependsOn": [
+							{
+								"activity": "Ingest circuits",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Ingest constructor standing",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Ingest drivers",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Ingest constructors",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "source_dataset_processed_data_parquet",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "List all ingested data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('List all ingested data').output.childItems",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Copy-2-db",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "ParquetSource",
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"wildcardFolderPath": {
+													"value": "@item().name",
+													"type": "Expression"
+												},
+												"wildcardFileName": "*.parquet",
+												"enablePartitionDiscovery": false
+											}
+										},
+										"sink": {
+											"type": "AzureSqlSink",
+											"writeBehavior": "insert",
+											"sqlWriterUseTableLock": false,
+											"tableOption": "autoCreate",
+											"disableMetricsCollection": false
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "source_dataset_processed_data_parquet",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "sink_dataset_sqlserver_database_for_processeddata",
+											"type": "DatasetReference",
+											"parameters": {
+												"tableName": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
 					}
 				],
 				"policy": {
@@ -216,7 +353,9 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/source_dataset_remote_database_in_csv')]",
 				"[concat(variables('factoryId'), '/datasets/sink_dataset_rawdata_csv')]",
-				"[concat(variables('factoryId'), '/linkedServices/linked_service_databricks')]"
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_databricks')]",
+				"[concat(variables('factoryId'), '/datasets/source_dataset_processed_data_parquet')]",
+				"[concat(variables('factoryId'), '/datasets/sink_dataset_sqlserver_database_for_processeddata')]"
 			]
 		},
 		{
@@ -348,52 +487,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/source_dataset_processed_data_parquet')]",
 				"[concat(variables('factoryId'), '/datasets/sink_dataset_sqlserver_database_for_processeddata')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/iterate_over_processed_data')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Get Metadata1",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "source_dataset_processed_data_parquet",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"childItems"
-							],
-							"storeSettings": {
-								"type": "AzureBlobStorageReadSettings",
-								"recursive": true,
-								"enablePartitionDiscovery": false
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2022-12-15T19:17:38Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/source_dataset_processed_data_parquet')]"
 			]
 		},
 		{
