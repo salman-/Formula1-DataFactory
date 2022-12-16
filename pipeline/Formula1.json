@@ -64,7 +64,7 @@
 				]
 			},
 			{
-				"name": "Ingest formule1 data",
+				"name": "Ingest circuits",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
@@ -83,7 +83,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/salman.lashkarara@diconium.com/Formula1-Databricks/notebooks/all_ingestions"
+					"notebookPath": "/Repos/salman.lashkarara@diconium.com/Formula1-Databricks/notebooks/ingestions/ingest_circuite"
 				},
 				"linkedServiceName": {
 					"referenceName": "linked_service_databricks",
