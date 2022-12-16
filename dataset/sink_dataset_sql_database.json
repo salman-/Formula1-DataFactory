@@ -1,5 +1,5 @@
 {
-	"name": "dataset_sql_database",
+	"name": "sink_dataset_sql_database",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "linked_service_sql_database",
