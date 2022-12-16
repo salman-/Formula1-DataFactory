@@ -1,5 +1,5 @@
 {
-	"name": "link_service_databricks",
+	"name": "linked_service_databricks",
 	"properties": {
 		"annotations": [],
 		"type": "AzureDatabricks",

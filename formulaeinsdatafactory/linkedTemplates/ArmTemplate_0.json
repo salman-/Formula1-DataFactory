@@ -57,7 +57,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/link_service_databricks')]",
+			"name": "[concat(parameters('factoryName'), '/linked_service_databricks')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -242,7 +242,7 @@
 							"notebookPath": "/Repos/salman.lashkarara@diconium.com/Formula1-Databricks/notebooks/all_ingestions"
 						},
 						"linkedServiceName": {
-							"referenceName": "link_service_databricks",
+							"referenceName": "linked_service_databricks",
 							"type": "LinkedServiceReference"
 						}
 					}
@@ -257,7 +257,7 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/source_dataset_formula1_database')]",
 				"[concat(variables('factoryId'), '/datasets/sink_formula1_raw_data')]",
-				"[concat(variables('factoryId'), '/linkedServices/link_service_databricks')]"
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_databricks')]"
 			]
 		},
 		{

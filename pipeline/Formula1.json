@@ -86,7 +86,7 @@
 					"notebookPath": "/Repos/salman.lashkarara@diconium.com/Formula1-Databricks/notebooks/all_ingestions"
 				},
 				"linkedServiceName": {
-					"referenceName": "link_service_databricks",
+					"referenceName": "linked_service_databricks",
 					"type": "LinkedServiceReference"
 				}
 			}
