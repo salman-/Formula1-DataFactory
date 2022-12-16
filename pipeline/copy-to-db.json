@@ -27,7 +27,10 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "constructors",
+							"wildcardFolderPath": {
+								"value": "@activity('Get Metadata1').output.childItems",
+								"type": "Expression"
+							},
 							"wildcardFileName": "*.parquet",
 							"enablePartitionDiscovery": false
 						}
