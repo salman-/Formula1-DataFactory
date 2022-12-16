@@ -7,15 +7,15 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "formulaeinsdatafactory"
 		},
-		"linked_service_raw_data_csv_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'linked_service_raw_data_csv'"
-		},
 		"linked_service_sql_database_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'linked_service_sql_database'"
 		},
 		"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://formuleinsstorage.blob.core.windows.net/"
+		},
+		"linked_service_raw_data_csv_properties_typeProperties_serviceEndpoint": {
 			"type": "string",
 			"defaultValue": "https://formuleinsstorage.blob.core.windows.net/"
 		},
@@ -50,14 +50,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"linked_service_raw_data_csv_connectionString": {
-						"value": "[parameters('linked_service_raw_data_csv_connectionString')]"
-					},
 					"linked_service_sql_database_connectionString": {
 						"value": "[parameters('linked_service_sql_database_connectionString')]"
 					},
 					"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
 						"value": "[parameters('linked_service_process_data_properties_typeProperties_serviceEndpoint')]"
+					},
+					"linked_service_raw_data_csv_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('linked_service_raw_data_csv_properties_typeProperties_serviceEndpoint')]"
 					},
 					"linked_service_remote_formula1_database_csv_properties_typeProperties_url": {
 						"value": "[parameters('linked_service_remote_formula1_database_csv_properties_typeProperties_url')]"

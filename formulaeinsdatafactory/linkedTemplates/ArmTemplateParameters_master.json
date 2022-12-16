@@ -5,13 +5,13 @@
 		"factoryName": {
 			"value": "formulaeinsdatafactory"
 		},
-		"linked_service_raw_data_csv_connectionString": {
-			"value": ""
-		},
 		"linked_service_sql_database_connectionString": {
 			"value": ""
 		},
 		"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
+			"value": "https://formuleinsstorage.blob.core.windows.net/"
+		},
+		"linked_service_raw_data_csv_properties_typeProperties_serviceEndpoint": {
 			"value": "https://formuleinsstorage.blob.core.windows.net/"
 		},
 		"linked_service_remote_formula1_database_csv_properties_typeProperties_url": {
