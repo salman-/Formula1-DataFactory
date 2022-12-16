@@ -1,0 +1,17 @@
+{
+	"name": "sink_dataset_sqlserver_database_for_processed_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_service_sql_database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "formula1",
+			"table": "autoCreateTable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

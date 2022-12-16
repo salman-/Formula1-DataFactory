@@ -52,13 +52,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "source_dataset_formula1_database",
+						"referenceName": "source_dataset_http_formula1_database_in_csv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "sink_formula1_raw_data",
+						"referenceName": "sink_dataset_formula1_raw_data_csv",
 						"type": "DatasetReference"
 					}
 				]
@@ -92,7 +92,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2022-12-05T20:46:39Z"
+		"lastPublishTime": "2022-12-15T14:18:10Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
