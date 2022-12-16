@@ -7,25 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "formulaeinsdatafactory"
 		},
-		"link_service_formula1_raw_data_accountKey": {
+		"linked_service_raw_data_csv_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'link_service_formula1_raw_data'"
-		},
-		"linked_service_formula1_processed_data_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'linked_service_formula1_processed_data'"
+			"metadata": "Secure string for 'connectionString' of 'linked_service_raw_data_csv'"
 		},
 		"linked_service_sql_database_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'linked_service_sql_database'"
-		},
-		"link_service_formula1_raw_data_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://formuleinsstorage.dfs.core.windows.net/"
-		},
-		"linked_service_formula1_processed_data_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://formuleinsstorage.dfs.core.windows.net/"
 		},
 		"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
 			"type": "string",
@@ -62,20 +50,11 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"link_service_formula1_raw_data_accountKey": {
-						"value": "[parameters('link_service_formula1_raw_data_accountKey')]"
-					},
-					"linked_service_formula1_processed_data_accountKey": {
-						"value": "[parameters('linked_service_formula1_processed_data_accountKey')]"
+					"linked_service_raw_data_csv_connectionString": {
+						"value": "[parameters('linked_service_raw_data_csv_connectionString')]"
 					},
 					"linked_service_sql_database_connectionString": {
 						"value": "[parameters('linked_service_sql_database_connectionString')]"
-					},
-					"link_service_formula1_raw_data_properties_typeProperties_url": {
-						"value": "[parameters('link_service_formula1_raw_data_properties_typeProperties_url')]"
-					},
-					"linked_service_formula1_processed_data_properties_typeProperties_url": {
-						"value": "[parameters('linked_service_formula1_processed_data_properties_typeProperties_url')]"
 					},
 					"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
 						"value": "[parameters('linked_service_process_data_properties_typeProperties_serviceEndpoint')]"

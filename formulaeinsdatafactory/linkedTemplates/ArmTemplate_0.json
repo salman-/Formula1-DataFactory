@@ -7,25 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "formulaeinsdatafactory"
 		},
-		"link_service_formula1_raw_data_accountKey": {
+		"linked_service_raw_data_csv_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'link_service_formula1_raw_data'"
-		},
-		"linked_service_formula1_processed_data_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'linked_service_formula1_processed_data'"
+			"metadata": "Secure string for 'connectionString' of 'linked_service_raw_data_csv'"
 		},
 		"linked_service_sql_database_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'linked_service_sql_database'"
-		},
-		"link_service_formula1_raw_data_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://formuleinsstorage.dfs.core.windows.net/"
-		},
-		"linked_service_formula1_processed_data_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://formuleinsstorage.dfs.core.windows.net/"
 		},
 		"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
 			"type": "string",
@@ -40,23 +28,6 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/link_service_formula1_raw_data')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('link_service_formula1_raw_data_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('link_service_formula1_raw_data_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/linked_service_databricks')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -81,23 +52,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/linked_service_formula1_processed_data')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('linked_service_formula1_processed_data_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('linked_service_formula1_processed_data_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/linked_service_process_data')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -107,6 +61,19 @@
 				"typeProperties": {
 					"serviceEndpoint": "[parameters('linked_service_process_data_properties_typeProperties_serviceEndpoint')]",
 					"accountKind": "StorageV2"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/linked_service_raw_data_csv')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('linked_service_raw_data_csv_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -187,15 +154,15 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "link_service_formula1_raw_data",
+					"referenceName": "linked_service_raw_data_csv",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileSystem": "rawdata"
+						"type": "AzureBlobStorageLocation",
+						"container": "rawdata"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -205,7 +172,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/link_service_formula1_raw_data')]"
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_raw_data_csv')]"
 			]
 		},
 		{
@@ -235,15 +202,15 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "link_service_formula1_raw_data",
+					"referenceName": "linked_service_raw_data_csv",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileSystem": "rawdata"
+						"type": "AzureBlobStorageLocation",
+						"container": "rawdata"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -253,7 +220,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/link_service_formula1_raw_data')]"
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_raw_data_csv')]"
 			]
 		},
 		{
@@ -289,22 +256,22 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "linked_service_formula1_processed_data",
+					"referenceName": "linked_service_process_data",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileSystem": "processeddata"
+						"type": "AzureBlobStorageLocation",
+						"container": "processeddata"
 					},
 					"compressionCodec": "none"
 				},
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/linked_service_formula1_processed_data')]"
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_process_data')]"
 			]
 		},
 		{
@@ -466,7 +433,7 @@
 							"source": {
 								"type": "ParquetSource",
 								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
+									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
 									"wildcardFolderPath": "races",
 									"wildcardFileName": "*.parquet",
@@ -546,7 +513,7 @@
 								"childItems"
 							],
 							"storeSettings": {
-								"type": "AzureBlobFSReadSettings",
+								"type": "AzureBlobStorageReadSettings",
 								"recursive": true,
 								"enablePartitionDiscovery": false
 							}

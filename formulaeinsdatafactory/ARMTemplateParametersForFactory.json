@@ -5,20 +5,11 @@
 		"factoryName": {
 			"value": "formulaeinsdatafactory"
 		},
-		"link_service_formula1_raw_data_accountKey": {
-			"value": ""
-		},
-		"linked_service_formula1_processed_data_accountKey": {
+		"linked_service_raw_data_csv_connectionString": {
 			"value": ""
 		},
 		"linked_service_sql_database_connectionString": {
 			"value": ""
-		},
-		"link_service_formula1_raw_data_properties_typeProperties_url": {
-			"value": "https://formuleinsstorage.dfs.core.windows.net/"
-		},
-		"linked_service_formula1_processed_data_properties_typeProperties_url": {
-			"value": "https://formuleinsstorage.dfs.core.windows.net/"
 		},
 		"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
 			"value": "https://formuleinsstorage.blob.core.windows.net/"
