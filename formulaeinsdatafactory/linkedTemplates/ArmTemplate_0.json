@@ -143,12 +143,20 @@
 					"referenceName": "linked_service_sql_database",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"tableName": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {
 					"schema": "formula1",
-					"table": "*"
+					"table": {
+						"value": "@dataset().tableName",
+						"type": "Expression"
+					}
 				}
 			},
 			"dependsOn": [
@@ -465,7 +473,12 @@
 							{
 								"referenceName": "sink_dataset_sqlserver_database_for_processeddata",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"tableName": {
+										"value": "@activity('Get Metadata1').output.childItems",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					},
