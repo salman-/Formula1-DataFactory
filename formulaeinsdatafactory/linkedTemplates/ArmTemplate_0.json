@@ -300,6 +300,87 @@
 							"referenceName": "linked_service_databricks",
 							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "Ingest constructor standing",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Download  Formula1 DB",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Repos/salman.lashkarara@diconium.com/Formula1-Databricks/notebooks/ingestions/ingest_constructor_standings"
+						},
+						"linkedServiceName": {
+							"referenceName": "linked_service_databricks",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Ingest constructors",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Download  Formula1 DB",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Repos/salman.lashkarara@diconium.com/Formula1-Databricks/notebooks/ingestions/ingest_constructors"
+						},
+						"linkedServiceName": {
+							"referenceName": "linked_service_databricks",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Ingest drivers",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Download  Formula1 DB",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Repos/salman.lashkarara@diconium.com/Formula1-Databricks/notebooks/ingestions/ingest_driver"
+						},
+						"linkedServiceName": {
+							"referenceName": "linked_service_databricks",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"policy": {
@@ -339,7 +420,7 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
-									"wildcardFolderPath": "circuits",
+									"wildcardFolderPath": "drivers",
 									"wildcardFileName": "*.parquet",
 									"enablePartitionDiscovery": false
 								}
