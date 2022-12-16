@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "formulaeinsdatafactory"
+		},
+		"link_service_formula1_raw_data_accountKey": {
+			"value": ""
+		},
+		"linked_service_formula1_processed_data_accountKey": {
+			"value": ""
+		},
+		"linked_service_sql_database_connectionString": {
+			"value": ""
+		},
+		"link_service_formula1_raw_data_properties_typeProperties_url": {
+			"value": "https://formuleinsstorage.dfs.core.windows.net/"
+		},
+		"linked_service_formula1_processed_data_properties_typeProperties_url": {
+			"value": "https://formuleinsstorage.dfs.core.windows.net/"
+		},
+		"linked_service_process_data_properties_typeProperties_serviceEndpoint": {
+			"value": "https://formuleinsstorage.blob.core.windows.net/"
+		},
+		"linked_service_remote_formula1_database_csv_properties_typeProperties_url": {
+			"value": "http://ergast.com/downloads/f1db_csv.zip"
+		}
+	}
+}
