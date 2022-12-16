@@ -61,7 +61,13 @@
 				"outputs": [
 					{
 						"referenceName": "sink_dataset_sqlserver_database_for_processeddata",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@activity('Get Metadata1').output.childItems",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
