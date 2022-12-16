@@ -155,33 +155,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/source_dataset_remote_formula1_database')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "linked_service_remote_formula1_database_csv",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "HttpServerLocation"
-					},
-					"columnDelimiter": ",",
-					"compressionCodec": "ZipDeflate",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/linked_service_remote_formula1_database_csv')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/source_dataset_formula1_processed_data_parquet')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
