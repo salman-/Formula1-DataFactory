@@ -9,7 +9,8 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation"
+				"type": "HttpServerLocation",
+				"relativeUrl": "/downloads/f1db_csv.zip"
 			},
 			"columnDelimiter": ",",
 			"compressionCodec": "ZipDeflate",
