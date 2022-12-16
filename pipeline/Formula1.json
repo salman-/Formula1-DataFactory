@@ -52,13 +52,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "source_dataset_http_formula1_database_in_csv",
+						"referenceName": "source_dataset_remote_database_in_csv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "sink_dataset_formula1_raw_data_csv",
+						"referenceName": "sink_dataset_rawdata_csv",
 						"type": "DatasetReference"
 					}
 				]

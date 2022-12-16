@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "source_dataset_formula1_processed_data_parquet",
+						"referenceName": "source_dataset_processed_data_parquet",
 						"type": "DatasetReference"
 					},
 					"fieldList": [

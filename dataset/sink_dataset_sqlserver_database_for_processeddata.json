@@ -1,5 +1,5 @@
 {
-	"name": "sink_dataset_sqlserver_database_for_processed_data",
+	"name": "sink_dataset_sqlserver_database_for_processeddata",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "linked_service_sql_database",

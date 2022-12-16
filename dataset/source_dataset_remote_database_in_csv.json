@@ -1,5 +1,5 @@
 {
-	"name": "source_dataset_http_formula1_database_in_csv",
+	"name": "source_dataset_remote_database_in_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "linked_service_remote_formula1_database_csv",

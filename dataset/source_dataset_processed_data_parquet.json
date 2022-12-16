@@ -1,5 +1,5 @@
 {
-	"name": "source_dataset_formula1_processed_data_parquet",
+	"name": "source_dataset_processed_data_parquet",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "linked_service_process_data",

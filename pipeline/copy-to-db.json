@@ -44,13 +44,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "source_dataset_formula1_processed_data_parquet",
+						"referenceName": "source_dataset_processed_data_parquet",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "sink_dataset_sqlserver_database_for_processed_data",
+						"referenceName": "sink_dataset_sqlserver_database_for_processeddata",
 						"type": "DatasetReference"
 					}
 				]

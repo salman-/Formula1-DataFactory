@@ -1,5 +1,5 @@
 {
-	"name": "sink_dataset_formula1_raw_data_csv",
+	"name": "sink_dataset_rawdata_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "linked_service_raw_data_csv",
