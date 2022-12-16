@@ -21,7 +21,7 @@
 		},
 		"linked_service_remote_formula1_database_csv_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "http://ergast.com/downloads/f1db_csv.zip"
+			"defaultValue": "http://ergast.com"
 		},
 		"containerUri": {
 			"type": "string",

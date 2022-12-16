@@ -21,7 +21,7 @@
 		},
 		"linked_service_remote_formula1_database_csv_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "http://ergast.com/downloads/f1db_csv.zip"
+			"defaultValue": "http://ergast.com"
 		}
 	},
 	"variables": {
@@ -148,7 +148,7 @@
 				"schema": [],
 				"typeProperties": {
 					"schema": "formula1",
-					"table": "autoCreateTable"
+					"table": "constructors"
 				}
 			},
 			"dependsOn": [
@@ -192,7 +192,8 @@
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "HttpServerLocation"
+						"type": "HttpServerLocation",
+						"relativeUrl": "/downloads/f1db_csv.zip"
 					},
 					"columnDelimiter": ",",
 					"compressionCodec": "ZipDeflate",
@@ -406,7 +407,14 @@
 					{
 						"name": "Copy-2-db",
 						"type": "Copy",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "Get Metadata1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"policy": {
 							"timeout": "0.12:00:00",
 							"retry": 0,
@@ -421,7 +429,7 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
-									"wildcardFolderPath": "drivers",
+									"wildcardFolderPath": "constructors",
 									"wildcardFileName": "*.parquet",
 									"enablePartitionDiscovery": false
 								}
@@ -457,6 +465,34 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Get Metadata1",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "source_dataset_processed_data_parquet",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
 					}
 				],
 				"policy": {
