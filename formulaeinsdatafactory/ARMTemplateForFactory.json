@@ -11,7 +11,7 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'link_service_formula1_raw_data'"
 		},
-		"formula1_database_link_service_properties_typeProperties_url": {
+		"linked_service_remote_formula1_database_csv_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "http://ergast.com/downloads/f1db_csv.zip"
 		},
@@ -171,7 +171,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "formula1_database_link_service",
+					"referenceName": "linked_service_remote_formula1_database_csv",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -189,18 +189,18 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/formula1_database_link_service')]"
+				"[concat(variables('factoryId'), '/linkedServices/linked_service_remote_formula1_database_csv')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/formula1_database_link_service')]",
+			"name": "[concat(parameters('factoryName'), '/linked_service_remote_formula1_database_csv')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "HttpServer",
 				"typeProperties": {
-					"url": "[parameters('formula1_database_link_service_properties_typeProperties_url')]",
+					"url": "[parameters('linked_service_remote_formula1_database_csv_properties_typeProperties_url')]",
 					"enableServerCertificateValidation": true,
 					"authenticationType": "Anonymous"
 				}

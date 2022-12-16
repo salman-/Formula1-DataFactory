@@ -1,5 +1,5 @@
 {
-	"name": "formula1_database_link_service",
+	"name": "linked_service_remote_formula1_database_csv",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],

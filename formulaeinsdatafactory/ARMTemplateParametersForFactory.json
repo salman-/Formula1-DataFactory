@@ -8,7 +8,7 @@
 		"link_service_formula1_raw_data_accountKey": {
 			"value": ""
 		},
-		"formula1_database_link_service_properties_typeProperties_url": {
+		"linked_service_remote_formula1_database_csv_properties_typeProperties_url": {
 			"value": "http://ergast.com/downloads/f1db_csv.zip"
 		},
 		"formulaeinskeyvault_properties_typeProperties_baseUrl": {

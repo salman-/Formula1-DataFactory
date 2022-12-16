@@ -2,7 +2,7 @@
 	"name": "source_dataset_formula1_database",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "formula1_database_link_service",
+			"referenceName": "linked_service_remote_formula1_database_csv",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
