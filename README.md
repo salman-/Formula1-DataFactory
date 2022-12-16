@@ -11,3 +11,4 @@
 3. Make sure the service-principal has enough permission over key-vault to GET the secrets from keyvault and share it with DataFactory (Keyvault-> Access Configuration).
 [This video](https://www.youtube.com/watch?v=zAzM0wCLtFo) explains how to connect DataFactory to Stroage-Account using keyVaults
 4. Make sure Data Factory is connected to Databricks as one of the steps is clearing the data
+5. Linked-services work based on Managed-Identity, therefore make sure that these managed-identity has role (`Storage Blob Data Contributor`) in the storage account (Storage-account->IAM->Role assignment)
