@@ -66,7 +66,7 @@
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
 										"wildcardFolderPath": {
-											"value": "@activity('List all ingested data').output.childItems",
+											"value": "@item().name",
 											"type": "Expression"
 										},
 										"wildcardFileName": "*.parquet",
@@ -102,7 +102,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tableName": {
-											"value": "@item().output",
+											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
