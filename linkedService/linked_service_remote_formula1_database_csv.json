@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "http://ergast.com",
+			"url": "http://ergast.com/downloads/f1db_csv.zip",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
